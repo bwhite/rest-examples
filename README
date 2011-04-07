@@ -1,6 +1,10 @@
 Example REST Server #1
+
 Description
 There are users, each user has 0 to many messages.  There is no authentication.
+
+Data Formats
+User names and message id's are restricted to [a-zA-Z0-9\_].  Message id's are generated for you and their structure should not be assumed.  Messages may contain any data you want.
 
 URL: <server_root>/
 # Get all users
