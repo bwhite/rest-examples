@@ -1,1 +1,46 @@
+Example REST Server #1
+Description
+There are users, each user has 0 to many messages.  There is no authentication.
 
+URL: <server_root>/
+# Get all users
+Method: GET
+Returns: 200 OK & JSON
+{'users': [user_id0, user_id1, ...]}
+
+
+URL: <server_root>/api/<user_id>/
+# Get user messages
+Method: GET
+Returns: 200 OK & JSON
+{'messages': {msg_id0: msg0, msg_id1: msg1, ...}}
+
+# Create new user
+Method: POST
+Returns: 200 OK & JSON
+{'messages': {msg_id0: msg0, msg_id1: msg1, ...}}
+
+# Delete user
+Method: DELETE
+Returns: 200 OK & JSON
+{}
+
+
+URL: <server_root>/api/<user_id>/msg/
+# Post a new message
+Method: POST
+Request Body: Message
+Returns: 200 OK & JSON
+{'msg_id': msg_id}
+
+
+URL: <server_root>/api/<user_id>/msg/<msg_id>
+# Get a specific message
+Method: GET
+Returns: 200 OK & JSON
+{'message': message}
+
+# Delete a specific message
+Method: DELETE
+Returns: 200 OK & JSON
+{}
