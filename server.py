@@ -67,7 +67,7 @@ class MsgHandle(object):
         if user_id not in data:
             return {'error': errors['user_nexist']}
         try:
-            new_key = str(max(data[user_id].keys()) + 1)
+            new_key = str(max(map(int, data[user_id].keys())) + 1)
         except ValueError:
             new_key = '0'
         data[user_id][new_key] = web.data()
@@ -86,7 +86,9 @@ class MsgInstanceHandle(object):
     def DELETE(self, user_id, msg_id):
         if user_id not in data:
             return {'error': errors['user_nexist']}
-        del data[user_id]
+        if msg_id not in data[user_id]:
+            return {'error': errors['msg_nexist']}
+        del data[user_id][msg_id]
         return {}
 
 
